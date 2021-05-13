@@ -107,7 +107,7 @@ export default function Window({ id }) {
               dangerouslySetInnerHTML={{ __html: marked("# THE WORLD SHALL KNOW *PAIN* !") }}
             />
             {url ? (
-              <iframe id="frame" src={url} frameBorder="0" allowFullScreen></iframe>
+              <iframe id="frame" title={id} src={url} frameBorder="0" allowFullScreen></iframe>
             ) : (
               <div id="frame" onClick={focus}>
                 <h1>Native App</h1>

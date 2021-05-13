@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import useStateActions from "./useStateActions";
 
 const useDesktop = () => {
@@ -14,6 +14,8 @@ const useDesktop = () => {
     if (validMessages.includes(event.data)) focus(event.data);
   };
 
+  const memoisedMessageHandler = useCallback(messageHandler, [messageHandler]);
+
   const rightClickHandler = (e) => {
     e.preventDefault();
     const [x, y, w, h] = [e.pageX, e.pageY, e.view.innerWidth, e.view.innerHeight];
@@ -24,12 +26,12 @@ const useDesktop = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("message", messageHandler);
+    window.addEventListener("message", memoisedMessageHandler);
 
     return () => {
-      window.removeEventListener("message", messageHandler);
+      window.removeEventListener("message", memoisedMessageHandler);
     };
-  }, []);
+  }, [memoisedMessageHandler]);
 
   const etherClick = (e) => {
     if (e.target.id === "Ether") {

@@ -1,25 +1,5 @@
-import React from "react";
-
 import { useState, none } from "@hookstate/core";
 import * as states from "../states";
-
-function useStickyState(globalState, key) {
-  const value = useState(globalState);
-
-  React.useEffect(() => {
-    const stickyValue = window.localStorage.getItem(key);
-
-    if (stickyValue !== null) {
-      value.set(JSON.parse(stickyValue));
-    }
-  }, [key]);
-
-  React.useEffect(() => {
-    window.localStorage.setItem(key, JSON.stringify(value.get()));
-  }, [key, value]);
-
-  return value;
-}
 
 export default function useStateActions(ID) {
   const { desktopState, appsState, rcmState } = states;

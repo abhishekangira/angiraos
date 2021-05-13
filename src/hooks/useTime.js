@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const useTime = () => {
   const [time, setTime] = useState("");
-  let id;
+  const id = useRef(null);
   useEffect(() => {
-    id = setInterval(() => {
+    id.current = setInterval(() => {
       setTime(new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }));
     }, 1000);
     return () => {
-      clearInterval(id);
+      clearInterval(id.current);
     };
   }, []);
   return time;
