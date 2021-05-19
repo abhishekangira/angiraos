@@ -1,5 +1,5 @@
 import { useState } from "@hookstate/core";
-import { Persistence } from "@hookstate/persistence";
+// import { Persistence } from "@hookstate/persistence";
 import { useRef } from "react";
 import useStateActions from "./useStateActions";
 

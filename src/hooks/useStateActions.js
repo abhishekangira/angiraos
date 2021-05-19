@@ -1,5 +1,5 @@
 import { useState, none } from "@hookstate/core";
-import { Persistence } from '@hookstate/persistence';
+// import { Persistence } from '@hookstate/persistence';
 import * as states from "../states";
 
 export default function useStateActions(ID) {
