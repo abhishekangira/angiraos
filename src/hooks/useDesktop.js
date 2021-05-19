@@ -7,6 +7,7 @@ const useDesktop = () => {
     icon,
     rcm,
     allApps,
+    wallpaper
   } = useStateActions();
 
   const messageHandler = function (event) {
@@ -43,6 +44,7 @@ const useDesktop = () => {
   return {
     rightClickHandler,
     etherClick,
+    wallpaper
   };
 };
 

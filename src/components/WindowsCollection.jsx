@@ -3,6 +3,7 @@ import Window from "./Window";
 
 export default function WindowsCollection() {
   const { apps } = useStateActions();
+
   return (
     <>
       <div

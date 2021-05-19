@@ -8,17 +8,17 @@ import WindowsCollection from "./WindowsCollection";
 import { Wrapper } from "../styles/Desktop.styles";
 
 export default function Desktop() {
-  const { rightClickHandler, etherClick } = useDesktop();
+  const { rightClickHandler, etherClick, wallpaper } = useDesktop();
 
   // console.log("Desktop");
 
   return (
-    <Wrapper onClick={etherClick} onContextMenu={rightClickHandler} id="Ether">
+    <Wrapper onClick={etherClick} onContextMenu={rightClickHandler}>
+      <img src={wallpaper} className="bg" alt="Background" />
       <div id="Ether" className="above-taskbar">
-        <img src="/images/bg/naruto.png" className="bg" alt="Background" />
+        <WindowsCollection />
         <RightClickMenu />
         <AppIconsCollection />
-        <WindowsCollection />
       </div>
       <Taskbar />
     </Wrapper>

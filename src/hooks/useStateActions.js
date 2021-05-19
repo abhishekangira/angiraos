@@ -1,10 +1,13 @@
 import { useState, none } from "@hookstate/core";
+import { Persistence } from '@hookstate/persistence';
 import * as states from "../states";
 
 export default function useStateActions(ID) {
   const { desktopState, appsState, rcmState } = states;
   const desktop = useState(desktopState);
+  // desktop.attach(Persistence('desktopState'))
   const apps = useState(appsState);
+  // apps.attach(Persistence('appsState'))
   const rcm = useState(rcmState);
 
   const actions = {
@@ -59,8 +62,8 @@ export default function useStateActions(ID) {
       select(id = ID) {
         desktop.selectedIcons[desktop.selectedIcons.length].set(id);
       },
-      changeTitle(id = ID) {
-        apps[id].title.set("Changed");
+      changeTitle(id = ID, title) {
+        apps[id].title.set(title);
       },
       isSelected(id = ID) {
         return desktop.selectedIcons.get().includes(id);
@@ -98,6 +101,9 @@ export default function useStateActions(ID) {
     get apps() {
       return apps.get();
     },
+    get wallpaper() {
+      return desktop.wallpaper.get()
+    }
   };
   return actions;
 }

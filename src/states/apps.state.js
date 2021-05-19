@@ -4,7 +4,8 @@ const istate = {
   ecom: {
     id: "ecom",
     url: "https://angira-react-ecommerce.web.app/",
-    title: "The Souled Store",
+    // url: "http://localhost:3006/",
+    title: "The Soul Store",
     icon: "/images/icons/ecom.svg",
     isOpen: false,
     isMinimized: false,
@@ -28,5 +29,3 @@ const istate = {
 };
 
 export const appsState = createState(istate);
-
-

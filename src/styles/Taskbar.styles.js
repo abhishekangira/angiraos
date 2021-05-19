@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   height: var(--taskbar-height);
-  background: #2c2c2c;
+  background-color: var(--primary-dark);
   width: 100%;
   z-index: 50;
 `;
@@ -19,25 +19,30 @@ const Left = styled.div`
 const StartIcon = styled.span`
   display: inline-flex;
   align-items: center;
-  font-size: 1.5rem;
-  color: #d6d6d6;
+  justify-content: center;
   height: 100%;
+  width: 5rem;
   cursor: pointer;
-  padding: 0 1rem;
+  padding: 0.6rem;
   user-select: none;
   &:hover {
     background: rgba(255, 255, 255, 0.3);
   }
+  img {
+    height: 100%;
+    filter: invert(88%);
+  }
 `;
 
 const Right = styled.div`
-  /* ... */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 `;
 
 const Time = styled.span`
   font-size: 1.3rem;
-  color: #d6d6d6;
-  height: 100%;
+  color: var(--text-dark);
   user-select: none;
   margin-right: 1rem;
 `;

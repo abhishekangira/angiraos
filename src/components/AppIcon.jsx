@@ -2,7 +2,7 @@ import { useState } from "@hookstate/core";
 
 import useAppIcon from "../hooks/useAppIcon";
 import { appsState } from "../states";
-import { Icon } from "../styles/AppIcon.styles";
+import { Icon, Rounded } from "../styles/AppIcon.styles";
 
 export default function AppIcon(props) {
   const { forTaskbar, id } = props;
@@ -24,7 +24,9 @@ export default function AppIcon(props) {
       isFocused={isFocused}
       isMinimized={isMinimized}
     >
-      <img src={icon} alt={icon} />
+      <Rounded forTaskbar={forTaskbar} isFocused={isFocused} isMinimized={isMinimized}>
+        <img src={icon} alt={icon} />
+      </Rounded>
 
       {!forTaskbar && <span>{title}</span>}
     </Icon>

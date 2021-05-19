@@ -6,7 +6,7 @@ import { BiWindow, BiWindows, BiFullscreen } from "react-icons/bi";
 import { FaRegWindowMinimize } from "react-icons/fa";
 import { TiInfoLarge } from "react-icons/ti";
 
-import { Content, Titlebar, Buttons, Markdown, Animated } from "../styles/Window.styles";
+import { Content, Titlebar, Buttons, Markdown, Frame } from "../styles/Window.styles";
 import useWindow from "../hooks/useWindow";
 import useAnimation from "../hooks/useAnimation";
 import marked from "marked";
@@ -14,6 +14,14 @@ import marked from "marked";
 export default function Window({ id }) {
   const {
     rndRef,
+    rndStart,
+    resizeStop,
+    dragStop,
+    height,
+    width,
+    x,
+    y,
+    frameRef,
     zIndex,
     isMaximized,
     maximize,
@@ -28,94 +36,76 @@ export default function Window({ id }) {
   } = useWindow(id);
 
   const fullscreenHandler = useFullScreenHandle();
-  const fade = useAnimation("fade");
 
   return (
-    <Animated style={fade}>
-      <Rnd
-        ref={rndRef}
-        default={{
-          x: window.innerWidth / 2 - 250,
-          y: 0,
-          width: 500,
-          height: 400,
-        }}
-        style={{
-          border: "1px solid #777",
-          display: isMinimized ? "none" : "block",
-          background: "white",
-          zIndex,
-        }}
-        onDragStart={() => {
-          focus();
-          document.getElementById("frame").style.pointerEvents = "none";
-        }}
-        onDragStop={() => {
-          document.getElementById("frame").style.pointerEvents = "auto";
-        }}
-        onResizeStart={() => {
-          focus();
-          document.getElementById("frame").style.pointerEvents = "none";
-        }}
-        onResizeStop={() => {
-          document.getElementById("frame").style.pointerEvents = "auto";
-        }}
-        disableDragging={isMaximized}
-        enableResizing={!isMaximized}
-        bounds="#boundary"
-        minWidth={300}
-        cancel="#frame, .window-menu-btn"
-      >
-        <Content showInfo={showInfo}>
-          {!fullscreenHandler.active && (
-            <Titlebar>
-              <span title={title}>{title}</span>
-              <Buttons>
-                <button
-                  title="How This Was Made"
-                  id="info"
-                  className="window-menu-btn"
-                  onClick={toggleShowInfo}
-                >
-                  <TiInfoLarge />
-                </button>
-                <button
-                  title="Fullscreen"
-                  className="window-menu-btn"
-                  onClick={() => {
-                    focus();
-                    fullscreenHandler.enter();
-                  }}
-                >
-                  <BiFullscreen />
-                </button>
-                <button title="Minimize" className="window-menu-btn" onClick={minimize}>
-                  <FaRegWindowMinimize />
-                </button>
-                <button title="Maximize" className="window-menu-btn" onClick={maximize}>
-                  {isMaximized ? <BiWindows /> : <BiWindow />}
-                </button>
-                <button title="Close" className="window-menu-btn" onClick={close}>
-                  <AiOutlineClose />
-                </button>
-              </Buttons>
-            </Titlebar>
-          )}
-          <FullScreen handle={fullscreenHandler}>
-            <Markdown
-              showInfo={showInfo}
-              dangerouslySetInnerHTML={{ __html: marked("# THE WORLD SHALL KNOW *PAIN* !") }}
-            />
+    <Rnd
+      ref={rndRef}
+      size={{ width, height }}
+      position={{ x, y }}
+      style={{
+        display: isMinimized ? "none" : "block",
+        background: "linear-gradient(to right, #2c2c2c, var(--primary-dark))",
+        zIndex,
+      }}
+      onDragStart={rndStart}
+      onDragStop={dragStop}
+      onResizeStart={rndStart}
+      onResizeStop={resizeStop}
+      disableDragging={isMaximized}
+      enableResizing={!isMaximized}
+      bounds="#boundary"
+      minWidth={300}
+      cancel="#frame, .window-menu-btn"
+    >
+      <Content>
+        {!fullscreenHandler.active && (
+          <Titlebar>
+            <span title={title}>{title}</span>
+            <Buttons>
+              <button
+                title="How This Was Made"
+                id="info"
+                className="window-menu-btn"
+                onClick={toggleShowInfo}
+              >
+                <TiInfoLarge />
+              </button>
+              <button
+                title="Fullscreen"
+                className="window-menu-btn"
+                onClick={() => {
+                  focus();
+                  fullscreenHandler.enter();
+                }}
+              >
+                <BiFullscreen />
+              </button>
+              <button title="Minimize" className="window-menu-btn" onClick={minimize}>
+                <FaRegWindowMinimize />
+              </button>
+              <button title="Maximize" className="window-menu-btn" onClick={maximize}>
+                {isMaximized ? <BiWindows /> : <BiWindow />}
+              </button>
+              <button title="Close" className="window-menu-btn" onClick={close}>
+                <AiOutlineClose />
+              </button>
+            </Buttons>
+          </Titlebar>
+        )}
+        <FullScreen handle={fullscreenHandler}>
+          <Markdown
+            showInfo={showInfo}
+            dangerouslySetInnerHTML={{ __html: marked("# THE WORLD SHALL KNOW *PAIN* !") }}
+          />
+          <Frame showInfo={showInfo} id="frame" ref={frameRef} onClick={focus}>
             {url ? (
-              <iframe id="frame" title={id} src={url} frameBorder="0" allowFullScreen></iframe>
+              <iframe title={id} src={url} frameBorder="0" allowFullScreen></iframe>
             ) : (
-              <div id="frame" onClick={focus}>
-                <h1>Native App</h1>
-              </div>
+              <h1>Native App</h1>
             )}
-          </FullScreen>
-        </Content>
-      </Rnd>
-    </Animated>
+          </Frame>
+        </FullScreen>
+      </Content>
+    </Rnd>
   );
 }

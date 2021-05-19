@@ -1,51 +1,51 @@
 import styled, { css } from "styled-components";
-import { animated } from "@react-spring/web";
-
-const Animated = styled(animated.div)``;
 
 const Content = styled.div`
-  height: 100%;
-  width: 100%;
+  pointer-events: auto;
   display: flex;
   flex-direction: column;
-
-  & > div {
-    height: 3.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #2c2c2c;
-    color: #fff;
-    white-space: nowrap;
-    span {
-      font-size: 1.4rem;
-      margin-left: 1rem;
-      overflow: hidden;
-    }
-  }
+  color: var(--text-dark);
+  height: 100%;
+  width: 100%;
   .fullscreen {
-    width: 100%;
     height: 100%;
-    #frame {
-      width: 100%;
-      height: 100%;
-      cursor: auto;
-      ${(props) =>
-        props.showInfo &&
-        css`
-          display: none;
-        `}
-    }
+    width: 100%;
   }
 `;
 
 const Titlebar = styled.div`
-  /* display: flex;
+  height: 3.5rem;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  height: 100%; */
+  white-space: nowrap;
+  span {
+    font-size: 1.4rem;
+    margin-left: 1rem;
+    overflow: hidden;
+  }
+`;
+
+const Frame = styled.div`
+  cursor: auto;
+  height: 100%;
+  width: 100%;
+  background-color: #2c2c2c;
+  iframe {
+    height: 100%;
+    width: 100%;
+  }
+  ${(props) =>
+    props.showInfo &&
+    css`
+      display: none;
+    `}
 `;
 
 const Buttons = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: min-content;
   button {
     background: none;
     font-size: 1.4rem;
@@ -64,9 +64,6 @@ const Buttons = styled.div`
 `;
 
 const Markdown = styled.div`
-  height: 100%;
-  width: 100%;
-  background: #2c2c2c;
   display: none;
   ${(props) =>
     props.showInfo &&
@@ -75,4 +72,4 @@ const Markdown = styled.div`
     `}
 `;
 
-export { Content, Titlebar, Buttons, Markdown, Animated };
+export { Content, Titlebar, Buttons, Markdown, Frame };

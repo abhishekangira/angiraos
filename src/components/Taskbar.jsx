@@ -1,18 +1,20 @@
 import Clock from "./Clock";
 
-import { Wrapper, Left, StartIcon, Right} from "../styles/Taskbar.styles";
+import { Wrapper, Left, Right, StartIcon } from "../styles/Taskbar.styles";
 import AppIconsCollection from "./AppIconsCollection";
 
 export default function Taskbar() {
-  console.log("taskbar")
+  console.log("taskbar");
   return (
     <Wrapper id="Ether">
       <Left>
-        <StartIcon>Open</StartIcon>
+        <StartIcon>
+          <img src="/images/icons/logo.svg" alt="Angira OS Logo" />
+        </StartIcon>
         <AppIconsCollection forTaskbar />
       </Left>
       <Right>
-        <Clock/>
+        <Clock />
       </Right>
     </Wrapper>
   );
