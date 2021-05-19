@@ -8,7 +8,6 @@ import { TiInfoLarge } from "react-icons/ti";
 
 import { Content, Titlebar, Buttons, Markdown, Frame } from "../styles/Window.styles";
 import useWindow from "../hooks/useWindow";
-import useAnimation from "../hooks/useAnimation";
 import marked from "marked";
 
 export default function Window({ id }) {
