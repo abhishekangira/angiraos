@@ -6,9 +6,9 @@ import { BiWindow, BiWindows, BiFullscreen } from "react-icons/bi";
 import { FaRegWindowMinimize } from "react-icons/fa";
 import { TiInfoLarge } from "react-icons/ti";
 
-import { Content, Titlebar, Buttons, Markdown, Frame } from "../styles/Window.styles";
+import { Content, Titlebar, Buttons, Info, Frame } from "../styles/Window.styles";
 import useWindow from "../hooks/useWindow";
-import marked from "marked";
+import AppInfo from "./AppInfo";
 
 export default function Window({ id }) {
   const {
@@ -36,6 +36,10 @@ export default function Window({ id }) {
 
   const fullscreenHandler = useFullScreenHandle();
 
+  const md = `## THE WORLD
+  *SHALL* KNOW **PAIN** ! [link to Google!](http://google.com)
+  ![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)`;
+
   return (
     <Rnd
       ref={rndRef}
@@ -44,6 +48,7 @@ export default function Window({ id }) {
       style={{
         display: isMinimized ? "none" : "block",
         background: "linear-gradient(to right, #2c2c2c, var(--primary-dark))",
+        backdropFilter: "blur(5px) saturate(100%) contrast(50%) brightness(120%)",
         zIndex,
       }}
       onDragStart={rndStart}
@@ -92,10 +97,7 @@ export default function Window({ id }) {
           </Titlebar>
         )}
         <FullScreen handle={fullscreenHandler}>
-          <Markdown
-            showInfo={showInfo}
-            dangerouslySetInnerHTML={{ __html: marked("# THE WORLD SHALL KNOW *PAIN* !") }}
-          />
+          {showInfo && <AppInfo id={id} />}
           <Frame showInfo={showInfo} id="frame" ref={frameRef} onClick={focus}>
             {url ? (
               <iframe title={id} src={url} frameBorder="0" allowFullScreen></iframe>

@@ -4,7 +4,6 @@ const istate = {
   ecom: {
     id: "ecom",
     url: "https://angira-react-ecommerce.web.app/",
-    // url: "http://localhost:3006/",
     title: "The Soul Store",
     icon: "/images/icons/ecom.svg",
     isOpen: false,
@@ -13,6 +12,7 @@ const istate = {
   myflix: {
     id: "myflix",
     url: "https://myflix-angira.vercel.app/",
+    // url: "http://localhost:3000/",
     title: "MyFlix",
     icon: "/images/icons/myflix.png",
     isOpen: false,

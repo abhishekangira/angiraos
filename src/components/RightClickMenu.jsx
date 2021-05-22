@@ -35,7 +35,7 @@ export default function RightClickMenu() {
       right={right}
       bottom={bottom}
     >
-      Hello
+      {rcm.type === "ether" ? "Ether" : "Icon"}
     </Wrapper>
   );
 }

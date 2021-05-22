@@ -79,11 +79,15 @@ export default function useStateActions(ID) {
       get isHidden() {
         return rcm.isHidden.get();
       },
-      hide() {
-        return rcm.isHidden.set(true);
+      get type() {
+        return rcm.type.get();
       },
-      show() {
-        return rcm.isHidden.set(false);
+      hide() {
+        rcm.isHidden.set(true);
+      },
+      show(type) {
+        rcm.type.set(type);
+        rcm.isHidden.set(false);
       },
       get pos() {
         return rcm.pos.get();
@@ -102,8 +106,8 @@ export default function useStateActions(ID) {
       return apps.get();
     },
     get wallpaper() {
-      return desktop.wallpaper.get()
-    }
+      return desktop.wallpaper.get();
+    },
   };
   return actions;
 }

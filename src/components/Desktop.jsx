@@ -15,7 +15,7 @@ export default function Desktop() {
   return (
     <Wrapper onClick={etherClick} onContextMenu={rightClickHandler}>
       <img src={wallpaper} className="bg" alt="Background" />
-      <div id="Ether" className="above-taskbar">
+      <div id="ether" className="above-taskbar">
         <WindowsCollection />
         <RightClickMenu />
         <AppIconsCollection />

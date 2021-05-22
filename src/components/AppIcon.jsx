@@ -23,6 +23,7 @@ export default function AppIcon(props) {
       forTaskbar={forTaskbar}
       isFocused={isFocused}
       isMinimized={isMinimized}
+      id="icon"
     >
       <Rounded forTaskbar={forTaskbar} isFocused={isFocused} isMinimized={isMinimized}>
         <img src={icon} alt={icon} />

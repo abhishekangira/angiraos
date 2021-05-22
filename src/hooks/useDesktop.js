@@ -7,7 +7,7 @@ const useDesktop = () => {
     icon,
     rcm,
     allApps,
-    wallpaper
+    wallpaper,
   } = useStateActions();
 
   const messageHandler = function (event) {
@@ -20,10 +20,17 @@ const useDesktop = () => {
   const rightClickHandler = (e) => {
     e.preventDefault();
     const [x, y, w, h] = [e.pageX, e.pageY, e.view.innerWidth, e.view.innerHeight];
-    if (e.target.id === "Ether") {
-      rcm.show();
-      rcm.setPos(x, y, w, h);
+    switch (e.target.id) {
+      case "ether":
+        rcm.show("ether");
+        break;
+      case "icon":
+        rcm.show("icon");
+        break;
+      default:
+        break;
     }
+    rcm.setPos(x, y, w, h);
   };
 
   useEffect(() => {
@@ -35,16 +42,16 @@ const useDesktop = () => {
   }, [memoisedMessageHandler]);
 
   const etherClick = (e) => {
-    if (e.target.id === "Ether") {
+    if (e.target.id === "ether") {
       icon.clearSelect();
-      console.log("Ether click");
+      // console.log("Ether click");
     }
     if (e.target.id !== "right-click-menu") rcm.hide();
   };
   return {
     rightClickHandler,
     etherClick,
-    wallpaper
+    wallpaper,
   };
 };
 

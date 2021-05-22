@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const Content = styled.div`
   pointer-events: auto;
@@ -35,11 +35,7 @@ const Frame = styled.div`
     height: 100%;
     width: 100%;
   }
-  ${(props) =>
-    props.showInfo &&
-    css`
-      display: none;
-    `}
+  display: ${(props) => (props.showInfo ? "none" : "block")};
 `;
 
 const Buttons = styled.div`
@@ -63,13 +59,4 @@ const Buttons = styled.div`
   }
 `;
 
-const Markdown = styled.div`
-  display: none;
-  ${(props) =>
-    props.showInfo &&
-    css`
-      display: block;
-    `}
-`;
-
-export { Content, Titlebar, Buttons, Markdown, Frame };
+export { Content, Titlebar, Buttons, Frame };
