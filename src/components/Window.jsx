@@ -43,8 +43,8 @@ export default function Window({ id }) {
       position={{ x, y }}
       style={{
         display: isMinimized ? "none" : "block",
-        background: "linear-gradient(to right, #2c2c2c, var(--primary-dark))",
-        backdropFilter: "blur(5px) saturate(100%) contrast(50%) brightness(120%)",
+        background: "var(--primary-dark)",
+        backdropFilter: "blur(5px)",
         zIndex,
       }}
       onDragStart={rndStart}

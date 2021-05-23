@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   align-items: center;
   height: var(--taskbar-height);
   background-color: var(--primary-dark);
+  backdrop-filter: blur(5px);
   width: 100%;
   z-index: 50;
 `;
