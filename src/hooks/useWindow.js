@@ -68,13 +68,13 @@ export default function useWindow(id) {
     focus();
     frameRef.current.style.pointerEvents = "none";
   };
-  const dragStop = (e, d) => {
+  const dragStop = (_e, d) => {
     frameRef.current.style.pointerEvents = "auto";
     state.x.set(d.x);
     state.y.set(d.y);
     // console.log(state.get());
   };
-  const resizeStop = (e, direction, ref, delta, position) => {
+  const resizeStop = (_e, _direction, ref, _delta, position) => {
     frameRef.current.style.pointerEvents = "auto";
     state.width.set(ref.style.width);
     state.height.set(ref.style.height);

@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 export const Icon = styled.button`
   background: none;
   display: flex;
+  font-size: 1.3rem;
   padding: 1rem;
   justify-content: space-between;
   align-items: center;
