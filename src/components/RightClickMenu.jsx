@@ -1,9 +1,11 @@
 import useStateActions from "../hooks/useStateActions";
 import { Wrapper } from "../styles/RightClickMenu.styles";
+import { useSpring } from "@react-spring/web";
 
 export default function RightClickMenu() {
   const { rcm } = useStateActions();
-  const [x, y, w, h] = rcm.pos;
+  const [x, y] = rcm.pos;
+  const [w, h] = [window.innerWidth, window.innerHeight];
   const quadrant = x > w / 2 ? (y > h / 2 ? 3 : 2) : y > h / 2 ? 4 : 1;
   let top, left, right, bottom;
   switch (quadrant) {
@@ -26,10 +28,16 @@ export default function RightClickMenu() {
     default:
       console.error("invalid quadrant");
   }
+  const styles = useSpring({
+    opacity: rcm.isHidden ? 0 : 1,
+    height: rcm.isHidden ? "0rem" : "20rem",
+    width: rcm.isHidden ? "0rem" : "16rem",
+  });
   return (
     <Wrapper
+      style={styles}
       id="right-click-menu"
-      hidden={rcm.isHidden}
+      // hidden={rcm.isHidden}
       top={top}
       left={left}
       right={right}

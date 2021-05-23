@@ -92,8 +92,8 @@ export default function useStateActions(ID) {
       get pos() {
         return rcm.pos.get();
       },
-      setPos(x, y, w, h) {
-        rcm.pos.set([x, y, w, h]);
+      setPos(x, y) {
+        rcm.pos.set([x, y]);
       },
     },
     get allApps() {

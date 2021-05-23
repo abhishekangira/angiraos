@@ -19,7 +19,7 @@ const useDesktop = () => {
 
   const rightClickHandler = (e) => {
     e.preventDefault();
-    const [x, y, w, h] = [e.pageX, e.pageY, e.view.innerWidth, e.view.innerHeight];
+    const [x, y] = [e.pageX, e.pageY];
     switch (e.target.id) {
       case "ether":
         rcm.show("ether");
@@ -30,7 +30,7 @@ const useDesktop = () => {
       default:
         break;
     }
-    rcm.setPos(x, y, w, h);
+    rcm.setPos(x, y);
   };
 
   useEffect(() => {

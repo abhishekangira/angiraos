@@ -1,8 +1,8 @@
 import { useSpring } from "@react-spring/web";
 
-const useAnimation = () => {
+const useSpringAnimation = () => {
   const fade = useSpring({ from: { opacity: 0 }, opacity: 1 });
   return { fade };
 };
 
-export default useAnimation;
+export default useSpringAnimation;

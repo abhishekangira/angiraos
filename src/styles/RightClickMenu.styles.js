@@ -1,9 +1,7 @@
-import { animated } from "@react-spring/web";
+import { a } from "@react-spring/web";
 import styled from "styled-components";
 
-const Fade = styled(animated.div)``;
-
-const Wrapper = styled.div`
+const Wrapper = styled(a.div)`
   position: absolute;
   height: 20rem;
   width: 16rem;
@@ -18,4 +16,4 @@ const Wrapper = styled.div`
   bottom: ${({ bottom }) => bottom && `${bottom - 35}px`};
 `;
 
-export { Wrapper, Fade };
+export { Wrapper };
