@@ -7,5 +7,7 @@ export default function AppInfo({ id }) {
       return <EcomInfo />;
     case "myflix":
       return <MyflixInfo />;
+    default:
+      return <MyflixInfo />;
   }
 }

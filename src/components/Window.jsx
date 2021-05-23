@@ -6,7 +6,7 @@ import { BiWindow, BiWindows, BiFullscreen } from "react-icons/bi";
 import { FaRegWindowMinimize } from "react-icons/fa";
 import { TiInfoLarge } from "react-icons/ti";
 
-import { Content, Titlebar, Buttons, Info, Frame } from "../styles/Window.styles";
+import { Content, Titlebar, Buttons, Frame } from "../styles/Window.styles";
 import useWindow from "../hooks/useWindow";
 import AppInfo from "./AppInfo";
 
@@ -35,10 +35,6 @@ export default function Window({ id }) {
   } = useWindow(id);
 
   const fullscreenHandler = useFullScreenHandle();
-
-  const md = `## THE WORLD
-  *SHALL* KNOW **PAIN** ! [link to Google!](http://google.com)
-  ![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)`;
 
   return (
     <Rnd
