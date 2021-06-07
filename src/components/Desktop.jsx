@@ -13,9 +13,9 @@ export default function Desktop() {
   // console.log("Desktop");
 
   return (
-    <Wrapper onClick={etherClick} onContextMenu={rightClickHandler}>
+    <Wrapper onClick={etherClick}>
       <img src={wallpaper} className="bg" alt="Background" />
-      <div id="ether" className="above-taskbar">
+      <div id="ether" onContextMenu={rightClickHandler} className="above-taskbar">
         <WindowsCollection />
         <RightClickMenu />
         <AppIconsCollection />

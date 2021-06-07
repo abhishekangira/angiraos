@@ -14,12 +14,15 @@ const useDesktop = () => {
     const validMessages = allApps;
     if (validMessages.includes(event.data)) focus(event.data);
   };
-
+  
   const memoisedMessageHandler = useCallback(messageHandler, [messageHandler]);
-
+  
   const rightClickHandler = (e) => {
     e.preventDefault();
+    e.stopPropagation();
+    console.log(e);
     const [x, y] = [e.pageX, e.pageY];
+    console.log(e.target.id);
     switch (e.target.id) {
       case "ether":
         rcm.show("ether");

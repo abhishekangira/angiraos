@@ -1,13 +1,22 @@
 import { useState } from "@hookstate/core";
 
 import useAppIcon from "../hooks/useAppIcon";
+import useDesktop from "../hooks/useDesktop";
+
 import { appsState } from "../states";
 import { Icon, Rounded } from "../styles/AppIcon.styles";
 
 export default function AppIcon(props) {
   const { forTaskbar, id } = props;
   const state = useState(appsState);
-  const { isSelected, isFocused, isMinimized, onDoubleClick, onClick } = useAppIcon(props);
+  const {
+    isSelected,
+    isFocused,
+    isMinimized,
+    onDoubleClick,
+    onClick,
+    rightClickHandler,
+  } = useAppIcon(props);
   const { icon, title } = state[id].get();
 
   // console.log(NativeIcon);
@@ -19,17 +28,17 @@ export default function AppIcon(props) {
     <Icon
       onDoubleClick={onDoubleClick}
       onClick={onClick}
+      onContextMenu={rightClickHandler}
       isSelected={isSelected}
       forTaskbar={forTaskbar}
       isFocused={isFocused}
       isMinimized={isMinimized}
-      id="icon"
     >
       <Rounded forTaskbar={forTaskbar} isFocused={isFocused} isMinimized={isMinimized}>
         <img src={icon} alt={icon} />
       </Rounded>
 
-      {!forTaskbar && <span>{title}</span>}
+      {!forTaskbar && <span> {title}</span>}
     </Icon>
   );
 }

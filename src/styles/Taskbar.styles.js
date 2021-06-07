@@ -22,16 +22,16 @@ const StartIcon = styled.span`
   align-items: center;
   justify-content: center;
   height: 100%;
-  width: 5rem;
+  /* width: 5rem; */
   cursor: pointer;
-  padding: 0.6rem;
+  padding: 0.6rem ;
   user-select: none;
   &:hover {
     background: rgba(255, 255, 255, 0.3);
   }
   img {
     height: 100%;
-    filter: invert(88%);
+    filter: invert(18%);
   }
 `;
 

@@ -9,7 +9,7 @@ export default function Taskbar() {
     <Wrapper id="Ether">
       <Left>
         <StartIcon>
-          <img src="/images/icons/logo.svg" alt="Angira OS Logo" />
+          <img src="/images/icons/logo.webp" alt="Angira OS Logo" />
         </StartIcon>
         <AppIconsCollection forTaskbar />
       </Left>

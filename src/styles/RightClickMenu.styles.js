@@ -4,9 +4,9 @@ import { a } from "@react-spring/web";
 
 const Wrapper = styled(a.div)`
   position: absolute;
-  /* height: 20rem;
-  width: 16rem; */
+  width: 16rem;
   white-space: nowrap;
+  user-select: none;
   background: var(--primary-dark);
   color: var(--text-dark);
   font-size: var(--fsize-regular);

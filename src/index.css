@@ -1,7 +1,7 @@
 :root {
   --taskbar-height: 3.5rem;
   --primary-dark: rgba(44, 44, 44, 0.7);
-  --text-dark: #dadada;
+  --text-dark: rgb(217, 217, 217);
   --fsize-regular: 1.3rem;
 }
 

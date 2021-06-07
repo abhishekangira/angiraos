@@ -1,26 +1,26 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import useStateActions from "../hooks/useStateActions";
 import { Wrapper } from "../styles/RightClickMenu.styles";
 import { useSpring } from "@react-spring/web";
 
-export default function RightClickMenu({ controls }) {
+export default function RightClickMenu() {
   const { rcm } = useStateActions();
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    const mql = window.matchMedia("(max-width: 600px)");
-    function handleMobilePhoneResize(e) {
-      // Check if the media query is true
-      setShow(e.matches);
-      if (e.matches) {
-        // Then log the following message to the console
-        console.log("Media Query Matched!");
-      }
-    }
+  // useEffect(() => {
+  //   const mql = window.matchMedia("(max-width: 600px)");
+  //   function handleMobilePhoneResize(e) {
+  //     // Check if the media query is true
+  //     setShow(e.matches);
+  //     if (e.matches) {
+  //       // Then log the following message to the console
+  //       console.log("Media Query Matched!");
+  //     }
+  //   }
 
-    // Set up event listener
-    mql.addListener(handleMobilePhoneResize);
-  }, []);
+  //   // Set up event listener
+  //   // mql.addListener(handleMobilePhoneResize);
+  // }, []);
   const [x, y] = rcm.pos;
   const [w, h] = [window.innerWidth, window.innerHeight];
   const quadrant = x > w / 2 ? (y > h / 2 ? 3 : 2) : y > h / 2 ? 4 : 1;
@@ -49,7 +49,6 @@ export default function RightClickMenu({ controls }) {
   const animate = useSpring({
     opacity: rcm.isHidden ? 0 : 1,
     height: rcm.isHidden ? "0rem" : "20rem",
-    width: rcm.isHidden ? "0rem" : "16rem",
   });
 
   return (
@@ -62,7 +61,7 @@ export default function RightClickMenu({ controls }) {
       right={right}
       bottom={bottom}
     >
-      {show ? "Smaller than 650" : "Larger than 650"}
+      {rcm.type}
     </Wrapper>
   );
 }

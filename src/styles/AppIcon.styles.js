@@ -14,6 +14,12 @@ export const Icon = styled.button`
   border: none;
   cursor: pointer;
   user-select: none;
+
+  span {
+    width: 100%;
+    text-align: center;
+    text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.2);
+  }
   ${(props) =>
     props.forTaskbar &&
     css`
@@ -23,30 +29,25 @@ export const Icon = styled.button`
       width: 5rem;
     `}
 
-  span {
-    width: 100%;
-    text-align: center;
-    text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.2);
-  }
-
   &:hover {
     ${(props) =>
       !props.forTaskbar &&
       css`
-        background-color: rgba(255, 255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.1);
       `}
     ${(props) =>
       !props.forTaskbar &&
       props.isSelected &&
       css`
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(255, 255, 255, 0.2);
       `}
   }
+
   ${(props) =>
     props.isSelected &&
     !props.forTaskbar &&
     css`
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0.2);
     `}
 `;
 
@@ -54,11 +55,11 @@ export const Rounded = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--text-dark);
+  background-image: linear-gradient(0deg, #999 0%, #d3d3d3 74%);
   height: 5rem;
   width: 5rem;
   padding: 0.5rem;
-  border-radius: 20%;
+  border-radius: 35%;
 
   img {
     width: 100%;
@@ -67,10 +68,11 @@ export const Rounded = styled.div`
   ${(props) =>
     props.forTaskbar &&
     css`
-      background-color: rgba(255, 255, 255, 0.5);
       padding: 0.3rem;
-      height: 3rem;
+      height: 100%;
       width: 3.5rem;
+      border-radius: 0;
+
     `}
 
   ${(props) =>
@@ -78,14 +80,14 @@ export const Rounded = styled.div`
     props.isFocused &&
     !props.isMinimized &&
     css`
-      background-color: #33E7FF;
+      background: #33e7ff;
     `}
       
   &:hover {
     ${(props) =>
       props.forTaskbar &&
       css`
-        background-color: white;
+        background: #fff;
       `}
   }
 `;
