@@ -1,10 +1,9 @@
 import { useState } from "@hookstate/core";
-
 import useAppIcon from "../hooks/useAppIcon";
-import useDesktop from "../hooks/useDesktop";
-
 import { appsState } from "../states";
 import { Icon, Rounded } from "../styles/AppIcon.styles";
+
+
 
 export default function AppIcon(props) {
   const { forTaskbar, id } = props;
