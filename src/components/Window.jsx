@@ -54,7 +54,7 @@ export default function Window({ id }) {
       disableDragging={isMaximized}
       enableResizing={!isMaximized}
       bounds="#boundary"
-      minWidth={300}
+      minWidth={400}
       cancel="#frame, .window-menu-btn"
     >
       <Content>
